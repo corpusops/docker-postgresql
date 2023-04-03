@@ -1,4 +1,4 @@
-FROM library/postgres:9-alpine
+FROM library/postgres:10.19-stretch
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG INSTALL_DEFAULT_LOCALE="fr_FR.UTF-8"
