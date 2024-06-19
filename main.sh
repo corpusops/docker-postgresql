@@ -257,7 +257,7 @@ SKIPPED_TAGS="$SKIP_TF|$SKIP_MINOR_OS|$SKIP_NODE|$SKIP_DOCKER|$SKIP_MINIO|$SKIP_
 CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 
-SKIP_POSTGRES="postgres:(.*alpine3.*|9.*alpine.*|9\.[0-9]+\.[0-9]+.*|9\.0|8.*)$"
+SKIP_POSTGRES="postgres:(.*alpine3.*|9.*alpine.*|9\.[0-9]+\.[0-9]+.*|9\.0|8.*|1[09]\.[0-9].*)$"
 SKIPPED_TAGS="$SKIP_MISC|$SKIP_PRE|$SKIP_POSTGRES"
 
 default_images="

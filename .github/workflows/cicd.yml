@@ -65,7 +65,7 @@ jobs:
       fail-fast: false
       matrix:
         IMAGES:
-        - "library/postgres/alpine library/postgres/12-alpine library/postgres/13-alpine library/postgres/11-alpine library/postgres/10-alpine library/postgres/9-alpine"
+        - "library/postgres/alpine library/postgres/12-alpine library/postgres/13-alpine library/postgres/11-alpine library/postgres/10-alpine"
         - "library/postgres/latest library/postgres/13 library/postgres/12 library/postgres/11 library/postgres/10 library/postgres/9"
         - "corpusops/postgis-bare/alpine corpusops/postgis-bare/13-alpine corpusops/postgis-bare/12-alpine corpusops/postgis-bare/11-alpine corpusops/postgis-bare/10-alpine corpusops/postgis-bare/9-alpine"
         - "corpusops/postgis-bare/latest corpusops/postgis-bare/13 corpusops/postgis-bare/12 corpusops/postgis-bare/11 corpusops/postgis-bare/10 corpusops/postgis-bare/9"
