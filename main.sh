@@ -244,8 +244,8 @@ SKIP_OS="$SKIP_OS|(centos:(centos)?5)"
 SKIP_OS="$SKIP_OS|(fedora.*(modular|21))"
 SKIP_OS="$SKIP_OS|(traefik:((camembert|cancoillotte|cantal|chevrotin|faisselle|livarot|maroilles|montdor|morbier|picodon|raclette|reblochon|roquefort|tetedemoine)(-alpine)?|rc.*|(v?([0-9]+\.[0-9]+\.).*$)))"
 SKIP_OS="$SKIP_OS|(minio.*(armhf|aarch))"
+SKIP_PHP="(php:(5.4|5.3|.*(RC|-rc-).*))"
 SKIP_OS="$SKIP_OS)"
-SKIP_PHP="(php:(.*(RC|-rc-).*))"
 SKIP_WINDOWS="(.*(nanoserver|windows))"
 SKIP_MISC="(-?(on.?build)|pgrouting.*old)|seafile-mc:(7.0.1|7.0.2|7.0.3|7.0.4|7.0.5|7.1.3)|(dejavu:(v.*|1\..\.?.?|2\..\..)|3\.[1-3]\..|3.0.0|.*alpha.*$)"
 SKIP_NODE="((node):.*alpine3\..?.?)"
@@ -257,9 +257,8 @@ SKIPPED_TAGS="$SKIP_TF|$SKIP_MINOR_OS|$SKIP_NODE|$SKIP_DOCKER|$SKIP_MINIO|$SKIP_
 CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 
-SKIP_POSTGRES="postgres:(.*alpine.*|.*beta.*|.*alpine3.*|9.*alpine.*|9\.[0-9]+\.[0-9]+.*|9\.0|8.*|1[09]\.[0-9].*)$"
+SKIP_POSTGRES="alpine|postgres:(.*(bullseye|buster|stretch|jessie)|.*beta.*|.*alpine3.*|.*alpine.*|9\.[0-9]+\.[0-9]+.*|9\.0|8.*|1[0-9]\.[0-9].*)$"
 SKIPPED_TAGS="$SKIP_MISC|$SKIP_PRE|$SKIP_POSTGRES"
-
 default_images="
 library/postgres
 corpusops/pgrouting-bare
@@ -287,6 +286,20 @@ NODE_TOP="$(echo $(find_top_node))"
 MAILU_VERSiON=1.7
 
 BATCHED_IMAGES="\
+library/postgres/15\
+ library/postgres/14\
+ library/postgres/13\
+ library/postgres/12::30
+library/postgres/11\
+ library/postgres/10\
+ library/postgres/latest\
+ library/postgres/9::30
+library/postgres/9.6\
+ library/postgres/9.5\
+ library/postgres/9.4\
+ library/postgres/9.3\
+ library/postgres/9.2\
+ library/postgres/9.1::30
 corpusops/postgis-bare/15-3\
  corpusops/postgis-bare/14-3::30
 corpusops/postgis-bare/13-3\
@@ -296,6 +309,22 @@ corpusops/postgis-bare/11-3\
  corpusops/postgis-bare/10-2.4\
  corpusops/postgis-bare/10-2.5\
  corpusops/postgis-bare/10-3::30
+corpusops/pgrouting-bare/15-3-3.4\
+ corpusops/pgrouting-bare/14-3-3.4\
+ corpusops/pgrouting-bare/13-3-3.4\
+ corpusops/pgrouting-bare/12-2.5-2.6\
+ corpusops/pgrouting-bare/12-3-3.0\
+ corpusops/pgrouting-bare/12-3-3.1::30
+corpusops/pgrouting-bare/11-2.5-2.5\
+ corpusops/pgrouting-bare/11-2.5-2.6\
+ corpusops/pgrouting-bare/11-3-3.0\
+ corpusops/pgrouting-bare/11-3-3.1::30
+corpusops/pgrouting-bare/10-2.4-2.4\
+ corpusops/pgrouting-bare/10-2.4-2.5\
+ corpusops/pgrouting-bare/10-2.4-2.6\
+ corpusops/pgrouting-bare/10-2.5-2.4\
+ corpusops/pgrouting-bare/10-2.5-2.5\
+ corpusops/pgrouting-bare/10-2.5-2.6::30
 corpusops/postgis-bare/9.0-2.1\
  corpusops/postgis-bare/9.1-2.1\
  corpusops/postgis-bare/9.1-2.2\
@@ -308,23 +337,7 @@ corpusops/postgis-bare/9.0-2.1\
  corpusops/postgis-bare/9.5-2.4\
  corpusops/postgis-bare/9.5-2.5\
  corpusops/postgis-bare/9.6-2.4\
- corpusops/postgis-bare/9.6-2.5\
-corpusops/pgrouting-bare/15-3-3.4\
- corpusops/pgrouting-bare/14-3-3.4\
- corpusops/pgrouting-bare/13-3-3.4\
- corpusops/pgrouting-bare/12-2.5-2.6\
- corpusops/pgrouting-bare/12-3-3.0\
- corpusops/pgrouting-bare/12-3-3.1\
- corpusops/pgrouting-bare/11-2.5-2.5\
- corpusops/pgrouting-bare/11-2.5-2.6\
- corpusops/pgrouting-bare/11-3-3.0\
- corpusops/pgrouting-bare/11-3-3.1\
- corpusops/pgrouting-bare/10-2.4-2.4\
- corpusops/pgrouting-bare/10-2.4-2.5\
- corpusops/pgrouting-bare/10-2.4-2.6\
- corpusops/pgrouting-bare/10-2.5-2.4\
- corpusops/pgrouting-bare/10-2.5-2.5\
- corpusops/pgrouting-bare/10-2.5-2.6::30
+ corpusops/postgis-bare/9.6-2.5::30
 "
 #library/postgres/latest\
 # library/postgres/15\
@@ -345,7 +358,7 @@ POSTGIS_MINOR_TAGS="
 9.4-2.5 9.5-2.5 9.6-2.5
 10-2.4 10-2.5 10-3
 11-2.5 11-3
-12-2.5 12-3
+12-3
 13-3
 14-3
 15-3
@@ -384,13 +397,18 @@ PGROUTING_MINOR_TAGS="
 12-2.5-2.6
 12-2.5-2.6
 "
-BATCHED_IMAGES="
-"
 POSTGRES_MAJOR="9 10 11 12 13 14 15"
-packagesUrlJessie='http://apt.postgresql.org/pub/repos/apt/dists/jessie-pgdg/main/binary-amd64/Packages'
+packagesUrlJessie='http://apt-archive.postgresql.org/pub/repos/apt/dists/jessie-pgdg/main/binary-amd64/Packages'
 packagesJessie="local/$(echo "$packagesUrlJessie" | sed -r 's/[^a-zA-Z.-]+/-/g')"
-packagesUrlStretch='http://apt.postgresql.org/pub/repos/apt/dists/stretch-pgdg/main/binary-amd64/Packages'
+packagesUrlStretch='http://apt-archive.postgresql.org/pub/repos/apt/dists/stretch-pgdg/main/binary-amd64/Packages'
 packagesStretch="local/$(echo "$packagesUrlStretch" | sed -r 's/[^a-zA-Z.-]+/-/g')"
+packagesUrlBuster='http://apt.postgresql.org/pub/repos/apt/dists/buster-pgdg/main/binary-amd64/Packages'
+packagesBuster="local/$(echo "$packagesUrlBuster" | sed -r 's/[^a-zA-Z.-]+/-/g')"
+packagesUrlBullseye='http://apt.postgresql.org/pub/repos/apt/dists/bullseye-pgdg/main/binary-amd64/Packages'
+packagesBullseye="local/$(echo "$packagesUrlBullseye" | sed -r 's/[^a-zA-Z.-]+/-/g')"
+
+PGROUTING_REPO="${PGROUTING_REPO:-"https://salsa.debian.org/debian-gis-team/pgrouting.git"}"
+PGROUTING_UPSTREAM_REPO="${PGROUTING_UPSTREAM_REPO:-"https://github.com/pgRouting/pgrouting.git"}"
 
 declare -A duplicated_tags
 declare -A registry_tokens
@@ -400,6 +418,8 @@ postgis_alpine_vers[2.3]="2.3.11"
 postgis_alpine_vers[2.3.11]="98b4bde783d6d2cda01ac268317ef83210370253f41c9dc937adeea2aa443dc3"
 postgis_alpine_vers[2.4]="2.4.9"
 postgis_alpine_vers[2.4.9]="77ba24bf8fbbfa65881d7d24bd6379f2001fff781d6ff512590bfaf16e605288"
+postgis_alpine_vers[2.5]="2.5.5"
+postgis_alpine_vers[2.5.5]="24b15ee36f3af02015da0e92a18f9046ea0b4fd24896196c8e6c2aa8e4b56baa"
 
 is_on_build() { echo "$@" | grep -E -iq "on.*build"; }
 slashcount() { local _slashcount="$(echo "${@}"|sed -e 's![^/]!!g')";echo ${#_slashcount}; }
@@ -587,11 +607,9 @@ is_skipped() {
     # fi
     return $ret
 }
-# echo $(set -x && is_skipped library/redis/3.0.4-32bit;echo $?)
-# exit 1
 
 skip_local() {
-    grep -E -v "(.\/)?local"
+    grep -E -v "(.\/)?local|\.git"
 }
 
 #  get_namespace_tag libary/foo/bar : get image tag with its final namespace
