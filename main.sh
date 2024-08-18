@@ -257,7 +257,7 @@ SKIPPED_TAGS="$SKIP_TF|$SKIP_MINOR_OS|$SKIP_NODE|$SKIP_DOCKER|$SKIP_MINIO|$SKIP_
 CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 
-SKIP_POSTGRES="postgres:(.*beta.*|.*alpine3.*|9.*alpine.*|9\.[0-9]+\.[0-9]+.*|9\.0|8.*|1[09]\.[0-9].*)$"
+SKIP_POSTGRES="postgres:(.*alpine.*|.*beta.*|.*alpine3.*|9.*alpine.*|9\.[0-9]+\.[0-9]+.*|9\.0|8.*|1[09]\.[0-9].*)$"
 SKIPPED_TAGS="$SKIP_MISC|$SKIP_PRE|$SKIP_POSTGRES"
 
 default_images="
@@ -287,53 +287,15 @@ NODE_TOP="$(echo $(find_top_node))"
 MAILU_VERSiON=1.7
 
 BATCHED_IMAGES="\
-library/postgres/alpine\
- library/postgres/12-alpine\
- library/postgres/13-alpine\
- library/postgres/14-alpine\
- library/postgres/15-alpine\
- library/postgres/11-alpine\
- library/postgres/10-alpine\
- library/postgres/9-alpine::30
-library/postgres/latest\
- library/postgres/15\
- library/postgres/14\
- library/postgres/13\
- library/postgres/12\
- library/postgres/11\
- library/postgres/10\
- library/postgres/9::30
-corpusops/postgis-bare/alpine\
- corpusops/postgis-bare/15-alpine\
- corpusops/postgis-bare/14-alpine\
- corpusops/postgis-bare/13-alpine\
- corpusops/postgis-bare/13-alpine\
- corpusops/postgis-bare/12-alpine\
- corpusops/postgis-bare/11-alpine\
- corpusops/postgis-bare/10-alpine\
- corpusops/postgis-bare/9-alpine::30
-corpusops/postgis-bare/latest\
- corpusops/postgis-bare/15\
- corpusops/postgis-bare/14\
- corpusops/postgis-bare/13\
- corpusops/postgis-bare/12\
- corpusops/postgis-bare/11\
- corpusops/postgis-bare/10\
- corpusops/postgis-bare/9::30
-corpusops/postgis-bare/9.4-2.4-alpine\
- corpusops/postgis-bare/9.4-2.5-alpine\
- corpusops/postgis-bare/9.5-2.4-alpine\
- corpusops/postgis-bare/9.5-2.5-alpine\
- corpusops/postgis-bare/9.6-2.4-alpine\
- corpusops/postgis-bare/9.6-2.5-alpine\
- corpusops/postgis-bare/10-2.4-alpine\
- corpusops/postgis-bare/10-2.5-alpine\
- corpusops/postgis-bare/10-3-alpine::30
-corpusops/postgis-bare/11-2.5-alpine\
- corpusops/postgis-bare/11-3-alpine\
- corpusops/postgis-bare/12-2.5-alpine\
- corpusops/postgis-bare/12-3-alpine\
- corpusops/postgis-bare/13-3-alpine::30
+corpusops/postgis-bare/15-3\
+ corpusops/postgis-bare/14-3::30
+corpusops/postgis-bare/13-3\
+ corpusops/postgis-bare/12-3::30
+corpusops/postgis-bare/11-3\
+ corpusops/postgis-bare/11-2.5\
+ corpusops/postgis-bare/10-2.4\
+ corpusops/postgis-bare/10-2.5\
+ corpusops/postgis-bare/10-3::30
 corpusops/postgis-bare/9.0-2.1\
  corpusops/postgis-bare/9.1-2.1\
  corpusops/postgis-bare/9.1-2.2\
@@ -342,28 +304,36 @@ corpusops/postgis-bare/9.0-2.1\
  corpusops/postgis-bare/9.3-2.3\
  corpusops/postgis-bare/9.3-2.4\
  corpusops/postgis-bare/9.4-2.3\
- corpusops/postgis-bare/9.4-2.4\
  corpusops/postgis-bare/9.4-2.5\
  corpusops/postgis-bare/9.5-2.4\
  corpusops/postgis-bare/9.5-2.5\
  corpusops/postgis-bare/9.6-2.4\
- corpusops/postgis-bare/9.6-2.5::30
-corpusops/postgis-bare/10-2.4\
- corpusops/postgis-bare/10-2.5\
- corpusops/postgis-bare/10-3\
- corpusops/postgis-bare/11-2.5\
- corpusops/postgis-bare/11-3\
- corpusops/postgis-bare/12-2.5\
- corpusops/postgis-bare/12-3\
- corpusops/postgis-bare/13-3::30
-corpusops/pgrouting-bare/13-3-3.1\
- corpusops/pgrouting-bare/12-3-3.1\
- corpusops/pgrouting-bare/11-3-3.1\
+ corpusops/postgis-bare/9.6-2.5\
+corpusops/pgrouting-bare/15-3-3.4\
+ corpusops/pgrouting-bare/14-3-3.4\
+ corpusops/pgrouting-bare/13-3-3.4\
+ corpusops/pgrouting-bare/12-2.5-2.6\
  corpusops/pgrouting-bare/12-3-3.0\
+ corpusops/pgrouting-bare/12-3-3.1\
+ corpusops/pgrouting-bare/11-2.5-2.5\
  corpusops/pgrouting-bare/11-2.5-2.6\
- corpusops/pgrouting-bare/10-2.5-2.6\
- corpusops/pgrouting-bare/9.6-2.5-2.6::30
+ corpusops/pgrouting-bare/11-3-3.0\
+ corpusops/pgrouting-bare/11-3-3.1\
+ corpusops/pgrouting-bare/10-2.4-2.4\
+ corpusops/pgrouting-bare/10-2.4-2.5\
+ corpusops/pgrouting-bare/10-2.4-2.6\
+ corpusops/pgrouting-bare/10-2.5-2.4\
+ corpusops/pgrouting-bare/10-2.5-2.5\
+ corpusops/pgrouting-bare/10-2.5-2.6::30
 "
+#library/postgres/latest\
+# library/postgres/15\
+# library/postgres/14\
+# library/postgres/13\
+# library/postgres/12\
+# library/postgres/11\
+# library/postgres/10\
+# library/postgres/9::30
 SKIP_REFRESH_ANCESTORS=${SKIP_REFRESH_ANCESTORS-}
 POSTGIS_MINOR_TAGS="
 9.0-2.1
@@ -379,38 +349,44 @@ POSTGIS_MINOR_TAGS="
 13-3
 14-3
 15-3
-16-3
 "
 PGROUTING_MINOR_TAGS="
-9.4-2.4-2.4
-9.4-2.4-2.5
-9.4-2.4-2.6
+15-3-3.4
+14-3-3.4
+13-3-3.4
+12-3-3.1
+12-3-3.0
+11-3-3.1
+11-3-3.0
+11-2.5-2.6
+10-2.5-2.6
+9.6-2.5-2.6
+
 9.5-2.4-2.4
 9.5-2.4-2.5
 9.5-2.4-2.6
 9.6-2.4-2.4
 9.6-2.4-2.5
 9.6-2.4-2.6
-9.4-2.5-2.4
-9.4-2.5-2.5
 9.4-2.5-2.6
 9.5-2.5-2.4
 9.5-2.5-2.5
 9.5-2.5-2.6
 9.6-2.5-2.4
 9.6-2.5-2.5
-9.6-2.5-2.6
 10-2.4-2.4
 10-2.4-2.5
 10-2.4-2.6
 10-2.5-2.4
 10-2.5-2.5
-10-2.5-2.6
-11-2.5-2.4
 11-2.5-2.5
-11-2.5-2.6
+12-2.5-2.6
+12-2.5-2.6
+12-2.5-2.6
 "
-POSTGRES_MAJOR="9 10 11 12 13 14 15 16"
+BATCHED_IMAGES="
+"
+POSTGRES_MAJOR="9 10 11 12 13 14 15"
 packagesUrlJessie='http://apt.postgresql.org/pub/repos/apt/dists/jessie-pgdg/main/binary-amd64/Packages'
 packagesJessie="local/$(echo "$packagesUrlJessie" | sed -r 's/[^a-zA-Z.-]+/-/g')"
 packagesUrlStretch='http://apt.postgresql.org/pub/repos/apt/dists/stretch-pgdg/main/binary-amd64/Packages'
