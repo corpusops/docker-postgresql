@@ -1,4 +1,4 @@
-FROM library/postgres:11 AS final
+FROM library/postgres:16 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive

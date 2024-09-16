@@ -286,7 +286,8 @@ NODE_TOP="$(echo $(find_top_node))"
 MAILU_VERSiON=1.7
 
 BATCHED_IMAGES="\
-library/postgres/15\
+library/postgres/16\
+ library/postgres/15\
  library/postgres/14\
  library/postgres/13\
  library/postgres/12::30
@@ -300,7 +301,8 @@ library/postgres/9.6\
  library/postgres/9.3\
  library/postgres/9.2\
  library/postgres/9.1::30
-corpusops/postgis-bare/15-3\
+corpusops/postgis-bare/16-3\
+ corpusops/postgis-bare/15-3\
  corpusops/postgis-bare/14-3::30
 corpusops/postgis-bare/13-3\
  corpusops/postgis-bare/12-3::30
@@ -309,7 +311,7 @@ corpusops/postgis-bare/11-3\
  corpusops/postgis-bare/10-2.4\
  corpusops/postgis-bare/10-2.5\
  corpusops/postgis-bare/10-3::30
-corpusops/pgrouting-bare/15-3-3.4\
+corpusops/pgrouting-bare/16-3-3.4\
  corpusops/pgrouting-bare/14-3-3.4\
  corpusops/pgrouting-bare/13-3-3.4\
  corpusops/pgrouting-bare/12-2.5-2.6\
@@ -362,8 +364,10 @@ POSTGIS_MINOR_TAGS="
 13-3
 14-3
 15-3
+16-3
 "
 PGROUTING_MINOR_TAGS="
+16-3-3.4
 15-3-3.4
 14-3-3.4
 13-3-3.4
@@ -397,7 +401,7 @@ PGROUTING_MINOR_TAGS="
 12-2.5-2.6
 12-2.5-2.6
 "
-POSTGRES_MAJOR="9 10 11 12 13 14 15"
+POSTGRES_MAJOR="9 10 11 12 13 14 15 16"
 packagesUrlJessie='http://apt-archive.postgresql.org/pub/repos/apt/dists/jessie-pgdg/main/binary-amd64/Packages'
 packagesJessie="local/$(echo "$packagesUrlJessie" | sed -r 's/[^a-zA-Z.-]+/-/g')"
 packagesUrlStretch='http://apt-archive.postgresql.org/pub/repos/apt/dists/stretch-pgdg/main/binary-amd64/Packages'
