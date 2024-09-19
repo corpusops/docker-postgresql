@@ -65,33 +65,22 @@ jobs:
       fail-fast: false
       matrix:
         IMAGES:
-        - "library/postgres/16 library/postgres/15 library/postgres/14 library/postgres/13 library/postgres/12"
-        - "library/postgres/11 library/postgres/10 library/postgres/latest library/postgres/9"
-        - "library/postgres/9.6 library/postgres/9.5 library/postgres/9.4 library/postgres/9.3 library/postgres/9.2 library/postgres/9.1"
-        - "corpusops/postgis-bare/15-3 corpusops/postgis-bare/14-3"
+        - "library/postgres/latest library/postgres/16 library/postgres/15 library/postgres/14"
+        - "library/postgres/13 library/postgres/12"
+        - "corpusops/postgis-bare/16-3 corpusops/postgis-bare/15-3 corpusops/postgis-bare/14-3"
+        - "corpusops/pgrouting-bare/16-3-3.6 corpusops/pgrouting-bare/15-3-3.6"
+        - "corpusops/pgrouting-bare/16-3-3.5 corpusops/pgrouting-bare/15-3-3.5"
+        - "corpusops/pgrouting-bare/16-3-3.4 corpusops/pgrouting-bare/15-3-3.4 corpusops/pgrouting-bare/14-3-3.4"
         - "corpusops/postgis-bare/13-3 corpusops/postgis-bare/12-3"
-        - "corpusops/postgis-bare/11-3 corpusops/postgis-bare/11-2.5 corpusops/postgis-bare/10-2.4 corpusops/postgis-bare/10-2.5 corpusops/postgis-bare/10-3"
-        - "corpusops/pgrouting-bare/14-3-3.4 corpusops/pgrouting-bare/13-3-3.4 corpusops/pgrouting-bare/12-2.5-2.6 corpusops/pgrouting-bare/12-3-3.0 corpusops/pgrouting-bare/12-3-3.1"
-        - "corpusops/pgrouting-bare/11-2.5-2.5 corpusops/pgrouting-bare/11-2.5-2.6 corpusops/pgrouting-bare/11-3-3.0 corpusops/pgrouting-bare/11-3-3.1"
-        - "corpusops/pgrouting-bare/10-2.4-2.4 corpusops/pgrouting-bare/10-2.4-2.5 corpusops/pgrouting-bare/10-2.4-2.6 corpusops/pgrouting-bare/10-2.5-2.4 corpusops/pgrouting-bare/10-2.5-2.5 corpusops/pgrouting-bare/10-2.5-2.6"
-        - "corpusops/postgis-bare/9.0-2.1 corpusops/postgis-bare/9.1-2.2 corpusops/postgis-bare/9.2-2.2 corpusops/postgis-bare/9.2-2.3 corpusops/postgis-bare/9.3-2.3 corpusops/postgis-bare/9.3-2.4 corpusops/postgis-bare/9.4-2.3 corpusops/postgis-bare/9.4-2.5 corpusops/postgis-bare/9.5-2.4 corpusops/postgis-bare/9.5-2.5 corpusops/postgis-bare/9.6-2.4 corpusops/postgis-bare/9.6-2.5"
+        - "corpusops/pgrouting-bare/13-3-3.4 corpusops/pgrouting-bare/12-2.5-2.6 corpusops/pgrouting-bare/12-3-3.0 corpusops/pgrouting-bare/12-3-3.1"
         #- "corpusops/test/a corpusops/test/b corpusops/test/c"
         # all images that werent explicitly told to be built would be built in the next batches
         # we span them onto N jobs
-        - "zleftover:1/14"
-        - "zleftover:2/14"
-        - "zleftover:3/14"
-        - "zleftover:4/14"
-        - "zleftover:5/14"
-        - "zleftover:6/14"
-        - "zleftover:7/14"
-        - "zleftover:8/14"
-        - "zleftover:9/14"
-        - "zleftover:10/14"
-        - "zleftover:11/14"
-        - "zleftover:12/14"
-        - "zleftover:13/14"
-        - "zleftover:14/14"
+        - "zleftover:1/5"
+        - "zleftover:2/5"
+        - "zleftover:3/5"
+        - "zleftover:4/5"
+        - "zleftover:5/5"
 on:
   push:
   workflow_dispatch:
