@@ -1,6 +1,6 @@
-ARG ANCESTOR=corpusops/postgis-bare:16
+ARG ANCESTOR=library/postgres:16.0
 ARG RSYNC=corpusops/rsync
-FROM corpusops/postgis-bare:16 AS final
+FROM library/postgres:16.0 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive
