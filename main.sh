@@ -261,7 +261,7 @@ CURRENT_TS=$(date +%s)
 IMAGES_SKIP_NS="((mailhog|postgis|pgrouting(-bare)?|^library|dejavu|(minio/(minio|mc))))"
 
 POSTGRES_SKIPPED_TAGS="postgres(-bare)?:(1[2-5]\.|((8|9|10|11)($|\.|-|$))|.*(rc|bullseye|buster|bookworm|stretch|jessie|alpine|beta))"
-PGROUTING_SKIPPED_TAGS="pgrouting(-bare)?:(((8|9|10|11)($|\.|-|$))|.*(rc|bullseye|buster|bookworm|stretch|jessie|alpine|beta))"
+PGROUTING_SKIPPED_TAGS="pgrouting(-bare)?:(((14-3-3.0|13-3-3.0|8|9|10|11)($|\.|-|$))|.*(rc|bullseye|buster|bookworm|stretch|jessie|alpine|beta))"
 POSTGIS_SKIPPED_TAGS="postgis(-bare)?:(((8|9|10|11)($|\.|-|$))|.*(rc|bullseye|buster|bookworm|stretch|jessie|alpine|beta))"
 SKIPPED_TAGS="$PGROUTING_SKIPPED_TAGS|$POSTGIS_SKIPPED_TAGS|$POSTGRES_SKIPPED_TAGS"
 
