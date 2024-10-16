@@ -333,6 +333,7 @@ library/postgres/11\
 "
 BATCHED_IMAGES="\
 library/postgres/latest\
+ library/postgres/17\
  library/postgres/16\
  library/postgres/15\
  library/postgres/14::30
@@ -417,7 +418,7 @@ PGROUTING_MINOR_TAGS="
 12-2.5-2.6
 12-2.5-2.6
 "
-POSTGRES_MAJOR="9 10 11 12 13 14 15 16"
+POSTGRES_MAJOR="9 10 11 12 13 14 15 16 17"
 packagesUrlJessie='http://apt-archive.postgresql.org/pub/repos/apt/dists/jessie-pgdg/main/binary-amd64/Packages'
 packagesJessie="local/$(echo "$packagesUrlJessie" | sed -r 's/[^a-zA-Z.-]+/-/g')"
 packagesUrlStretch='http://apt-archive.postgresql.org/pub/repos/apt/dists/stretch-pgdg/main/binary-amd64/Packages'
