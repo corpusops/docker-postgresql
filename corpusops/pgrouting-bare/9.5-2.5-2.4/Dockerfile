@@ -1,6 +1,7 @@
-FROM corpusops/pgrouting-bare:9.5-2.5-2.4
+FROM corpusops/pgrouting-bare:9.5-2.5-2.4 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
+ARG DEBIAN_FRONTEND=noninteractive
 ARG INSTALL_DEFAULT_LOCALE="fr_FR.UTF-8"
 ARG EXTRA_FILES_LIST=""
 ARG COPS_SYSTEM=${_cops_SYSTEM}
