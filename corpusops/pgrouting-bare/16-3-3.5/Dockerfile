@@ -1,6 +1,6 @@
-ARG ANCESTOR=corpusops/pgrouting-bare:13
+ARG ANCESTOR=corpusops/pgrouting-bare:16-3-3.5
 ARG RSYNC=corpusops/rsync
-FROM corpusops/pgrouting-bare:13 AS final
+FROM corpusops/pgrouting-bare:16-3-3.5 AS final
 ARG DO_UPDATE=y
 ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive
