@@ -6,7 +6,7 @@ ARG NONINTERACTIVE=y
 ARG DEBIAN_FRONTEND=noninteractive
 ARG INSTALL_DEFAULT_LOCALE="fr_FR.UTF-8"
 ARG EXTRA_FILES_LIST=""
-ARG COPS_SYSTEM=${_cops_SYSTEM}
+ARG COPS_SYSTEM=${_cops_SYSTEM-}
 ARG FOREGO_RELEASE=latest
 ARG REMCO_RELEASE=latest
 ARG GOSU_RELEASE=latest
@@ -89,9 +89,5 @@ FROM $RSYNC AS squashed-rsync
 FROM $ANCESTOR AS squashed-ancestor
 ARG ROOTFS="/BASE_ROOTFS_TO_COPY_THAT_WONT_COLLIDE_1234567890"
 ARG PATH="${ROOTFS}_rsync/bin:$PATH"
-SHELL ["busybox",  "sh", "-c"]
-RUN --mount=type=bind,from=final,target=$ROOTFS --mount=type=bind,from=squashed-rsync,target=${ROOTFS}_rsync \
-rsync -Aaz --delete ${ROOTFS}/ / --exclude=/proc --exclude=/sys --exclude=/etc/resolv.conf --exclude=/etc/hosts --exclude=$ROOTFS* --exclude=dev/shm --exclude=dev/pts --exclude=dev/mqueue
-SHELL ["/bin/sh", "-c"]
 ARG DOCKER_IMAGES_COMMIT="$DOCKER_IMAGES_COMMIT"
 LABEL com.github.corpusops.docker-images-commit="$DOCKER_IMAGES_COMMIT"
